@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zygnos Astraria Studio</title>
+  <!-- Favicon untuk Zygnos Astraria -->
+<link rel="icon" type="image/png" href="WhatsApp Image 2025-02-27 at 12.35.53-fotor-2025040418201.png">
+
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #0b0c1a, #1a1440, #2d0c3f);
+      color: #f0f0f0;
+      overflow-x: hidden;
+    }
+    header {
+      position: relative;
+      text-align: center;
+      padding: 100px 20px 50px;
+      background: transparent;
+      overflow: hidden;
+      
+    }
+    
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://cdn.pixabay.com/photo/2018/02/27/17/33/star-3187986_1280.jpg') repeat;
+      background-size: cover;
+      z-index: 0;
+      opacity: 0.2;
+      animation: moveStars 100s linear infinite;
+    }
+    @keyframes moveStars {
+      0% { background-position: 0 0; }
+      100% { background-position: -10000px 5000px; }
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #ff70e4;
+      text-shadow: 0 0 10px #ff70e4;
+      position: relative;
+      animation: slideDown 2s ease forwards, float 3s ease-in-out infinite;
+      opacity: 0;
+      z-index: 1;
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+      100% { transform: translateY(0); }
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+      z-index: 1;
+      position: relative;
+    }
+    .cta {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #00f7ff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00f7ff;
+      transition: all 0.3s ease;
+      z-index: 1;
+      position: relative;
+    }
+    .cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00f7ff;
+    }
+    .section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #00f7ff;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background-color: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1 1 280px;
+      box-shadow: 0 0 15px rgba(255, 112, 228, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 112, 228, 0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #0b0c1a;
+      color: #888;
+    }
+    .contact {
+      text-align: center;
+      margin-top: 40px;
+    }
+    input, textarea {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+      background-color: #222;
+      color: #fff;
+    }
+    .contact button {
+      background-color: #ff70e4;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+    .contact button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff70e4;
+    }
+    form {
+  position: relative;
+  z-index: 2;
+}
+input, textarea {
+  position: relative;
+  z-index: 2;
+}
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #a855f7, #ec4899); /* ungu ke pink */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.custom-carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.custom-slide {
+  display: none;
+  position: relative;
+  animation: fade 0.5s ease-in-out;
+}
+
+.custom-slide.active {
+  display: block;
+}
+
+.custom-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.custom-slide:hover img {
+  transform: scale(1.02);
+}
+
+.custom-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  max-width: 80%;
+}
+
+.custom-caption h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.custom-caption p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  padding: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-prev {
+  left: 20px;
+}
+
+.custom-next {
+  right: 20px;
+}
+
+@keyframes fade {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    
+    <div class="stars"></div>
+    <h1>Zygnos Astraria Studio</h1>
+    <p>Kami melayani segara project berbasis IT!!</p>
+    <a href="https://wa.me/6287784566057?text=Halo%20Admin%20Web%20Zygnos Astraria Studio%2C%20Saya%20ingin%20tanya-tanya%20dong mengenai%20mengenai project Zygnos Astraria" target="_blank">
+        <button class="cta">Klik Untuk Info Lebih Lanjut</button>
+      </a>
+      <link rel="icon" type="image/png" href="zzzz.png">
+  <section class="section">
+    <h2>Apa Projectmu?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Pembuatan Website?</h3>
+        <p>Kami siap membuatkan kamu website sesuai dengan keinginanmu secara elegan & modern</p>
+      </div>
+      <div class="card">
+        <h3>Tugas Editing?</h3>
+        <p>Kami juga melayani lohhhh, poster? banner? semuanya bisa!!</p>
+      </div>
+      <div class="card">
+        <h3>Pembuatan Makalah?</h3>
+        <p>Kamu kuesusahan membuat makalah? Tenang aja! serahkan semuanya ke kami!!</p>
+      </div>
+    </div>
+    <div class="card">
+        <h3>Pembuatan PPT</h3>
+        <p>Kamu ada tugas presentasi? Sini! biarkan kami membuat PPTNYA!!!</p>
+      </div>
+  </section>
+
+
+  <section class="section">
+    <h2>Portofolio</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Website Toko Online</h3>
+        <p>Platform e-commerce custom yang mudah digunakan dan menarik.</p>
+      </div>
+      <div class="card">
+        <h3>Portofolio Pribadi</h3>
+        <p>Cocok untuk freelancer, desainer, dan pelajar yang ingin tampil keren.</p>
+      </div>
+      <div class="card">
+        <h3>Landing Page</h3>
+        <p>Halaman promosi untuk produk atau event spesial yang menggoda klik.</p>
+      </div>
+    </div>
+  </section>
+  <h2 class="section-title">Project</h2>
+
+  <div class="custom-carousel">
+    <div class="custom-slide active">
+      <img src="v svs.PNG" alt="Foto 1">
+      <div class="custom-caption">
+        <h3>Website SMAN 1 Purwosari</h3>
+        <p>Project P5 dengan tema "Rekayasa Teknologi"</p>
+      </div>
+    </div>
+  
+    <div class="custom-slide">
+      <img src="Capture.PNG" alt="Foto 2">
+      <div class="custom-caption">
+        <h3>Era Cake Official Website</h3>
+        <p>Website catering berbasis digital dan modern</p>
+      </div>
+    </div>
+  
+    <div class="custom-slide">
+      <img src="mmm.PNG" alt="Foto 3">
+      <div class="custom-caption">
+        <h3>Error??</h3>
+        <p>Udah jadi makanan sehari hari!!!!!!!!</p>
+      </div>
+    </div>
+  
+    <!-- Tombol navigasi -->
+    <button class="custom-prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="custom-next" onclick="changeSlide(1)">&#10095;</button>
+  </div>
+  
+  
+  <h2 class="section-title">HUBUNGII KAMI!!</h2>
+
+  <form id="contact-form" onsubmit="sendToWhatsApp(); return false;" style="position:relative; z-index:2;">
+    <input type="text" id="nama" placeholder="Nama Kamu" required style="z-index:2;"><br>
+    <input type="email" id="email" placeholder="Email / WhatsApp" required style="z-index:2;"><br>
+    <textarea rows="4" id="pesan" placeholder="Apa yang kamu butuhkan?..." required style="z-index:2;"></textarea><br>
+    <button type="submit" style="z-index:2;">Kirim Pesan</button>
+    <p id="form-status" style="margin-top:10px; color:lightgreen; z-index:2;"></p>
+  </form>
+  
+  
+  <script>
+   
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.custom-slide');
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+    });
+
+    slides[index].classList.add('active');
+  }
+
+  function changeSlide(n) {
+    currentSlide = (currentSlide + n + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Tampilkan slide pertama saat halaman dimuat
+  showSlide(currentSlide);
+
+    function sendToWhatsApp() {
+      const nama = document.getElementById('nama').value;
+      const email = document.getElementById('email').value;
+      const pesan = document.getElementById('pesan').value;
+  
+      const noWa = '6287784566057'; // Ganti dengan nomor WhatsApp kamu
+      const url = `https://wa.me/${6287784566057}?text=Halo%20Zyper%20Web%20Studio%2C%20saya%20${encodeURIComponent(nama)}%20(${encodeURIComponent(email)}).%20${encodeURIComponent(pesan)}`;
+  
+      document.getElementById('form-status').textContent = 'Mengarahkan ke WhatsApp...';
+      window.open(url, '_blank');
+    }
+    
+  </script>
+  
+
+  <footer>
+    <img src="zzzz.png" alt="Logo kecil" height="30">
+    <p>© 2025 ZygnosAsT Studio. All rights reserved.</p>
+  </footer>  
+</body>
+</html>
